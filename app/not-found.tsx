@@ -36,7 +36,7 @@ export default function NotFound() {
             transition={{ delay: 0.4 }}
             className="text-xl text-navy-200 mb-8"
           >
-            But we can build it! The page you're looking for doesn't exist, but we're here to help
+            But we can build it! The page you&apos;re looking for doesn&apos;t exist, but we&apos;re here to help
             bring your vision to life.
           </motion.p>
 

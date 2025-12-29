@@ -15,7 +15,7 @@ export default function ContactPage() {
           Get in <span className="gradient-text">Touch</span>
         </h1>
         <p className="text-xl text-navy-200 max-w-2xl mx-auto">
-          Have a project in mind? Let's discuss how we can help bring your vision to life.
+          Have a project in mind? Let&apos;s discuss how we can help bring your vision to life.
         </p>
       </div>
       <div className="container-custom">

@@ -49,7 +49,7 @@ export default function Testimonials() {
             What Our <span className="gradient-text">Clients Say</span>
           </h2>
           <p className="text-xl text-navy-600 dark:text-navy-300 max-w-2xl mx-auto">
-            Don't just take our word for it—hear from satisfied clients
+            Don&apos;t just take our word for it—hear from satisfied clients
           </p>
         </motion.div>
 
@@ -89,7 +89,7 @@ export default function Testimonials() {
                 ))}
               </div>
               <p className="text-navy-700 dark:text-navy-200 leading-relaxed">
-                "{testimonial.text}"
+                &quot;{testimonial.text}&quot;
               </p>
             </motion.div>
           ))}
