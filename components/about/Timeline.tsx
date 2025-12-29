@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Calendar, Award, Users, Rocket } from "lucide-react";
+import { Calendar, Award, Users, Rocket, type LucideIcon } from "lucide-react";
 
 const milestones = [
   {
@@ -85,7 +85,7 @@ function TimelineItem({
   milestone: typeof milestones[0];
   index: number;
   isEven: boolean;
-  Icon: React.ComponentType<{ size?: number; className?: string }>;
+  Icon: LucideIcon;
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });

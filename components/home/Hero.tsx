@@ -3,8 +3,24 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
+import { useState, useEffect } from "react";
 
 export default function Hero() {
+  const [particles, setParticles] = useState<Array<{ x: number; y: number; duration: number; delay: number }>>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Generate random positions only on client side to avoid hydration mismatch
+    const particleData = Array.from({ length: 50 }, () => ({
+      x: Math.random() * 1920,
+      y: Math.random() * 1080,
+      duration: Math.random() * 3 + 2,
+      delay: Math.random() * 2,
+    }));
+    setParticles(particleData);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with parallax effect */}
@@ -15,28 +31,30 @@ export default function Hero() {
       </div>
 
       {/* Animated particles effect */}
-      <div className="absolute inset-0 z-10">
-        {[...Array(50)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-gold-500 rounded-full"
-            initial={{
-              x: Math.random() * 1920,
-              y: Math.random() * 1080,
-              opacity: 0,
-            }}
-            animate={{
-              y: [null, Math.random() * 1080],
-              opacity: [0, 0.5, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-      </div>
+      {mounted && (
+        <div className="absolute inset-0 z-10">
+          {particles.map((particle, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-gold-500 rounded-full"
+              initial={{
+                x: particle.x,
+                y: particle.y,
+                opacity: 0,
+              }}
+              animate={{
+                y: [null, Math.random() * 1080],
+                opacity: [0, 0.5, 0],
+              }}
+              transition={{
+                duration: particle.duration,
+                repeat: Infinity,
+                delay: particle.delay,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative z-20 container-custom text-center">
