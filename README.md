@@ -143,3 +143,6 @@ For questions or support, please contact: hello@freelancepro.com
 
 Built with ❤️ using Next.js 15 and modern web technologies.
 
+---
+Last updated: 2025
+
