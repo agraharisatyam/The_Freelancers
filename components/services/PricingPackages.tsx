@@ -65,17 +65,17 @@ export default function PricingPackages() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="section-header"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
+          <h2 className="section-title">
             Transparent <span className="gradient-text">Pricing</span>
           </h2>
-          <p className="text-xl text-navy-600 dark:text-navy-300 max-w-2xl mx-auto">
+          <p className="section-subtitle">
             Choose the perfect package for your needs
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 grid-gap max-w-6xl mx-auto">
           {packages.map((pkg, index) => (
             <motion.div
               key={pkg.name}
@@ -83,34 +83,34 @@ export default function PricingPackages() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className={`relative p-8 rounded-2xl border-2 ${
+              whileHover={{ y: -5, scale: 1.01 }}
+              className={`relative p-6 rounded-xl border-2 ${
                 pkg.popular
                   ? "bg-gradient-to-br from-gold-500 to-gold-600 border-gold-500 scale-105"
                   : "bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700"
               }`}
             >
               {pkg.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="flex items-center space-x-1 px-4 py-1 bg-navy-900 text-white rounded-full text-sm font-semibold">
-                    <Star size={16} className="fill-white" />
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <div className="flex items-center space-x-1 px-3 py-1 bg-navy-900 text-white rounded-full text-xs font-semibold">
+                    <Star size={14} className="fill-white" />
                     <span>Best Value</span>
                   </div>
                 </div>
               )}
 
-              <div className={`text-center mb-8 ${pkg.popular ? "text-navy-900" : ""}`}>
-                <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
+              <div className={`text-center mb-6 ${pkg.popular ? "text-navy-900" : ""}`}>
+                <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
                 <div className="mb-2">
-                  <span className="text-4xl font-bold">{pkg.price}</span>
+                  <span className="text-3xl font-bold">{pkg.price}</span>
                   {pkg.period !== "quote" && (
-                    <span className="text-lg opacity-75">/{pkg.period}</span>
+                    <span className="text-base opacity-75">/{pkg.period}</span>
                   )}
                 </div>
-                <p className="text-sm opacity-75">{pkg.description}</p>
+                <p className="text-xs opacity-75">{pkg.description}</p>
               </div>
 
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-3 mb-6">
                 {pkg.features.map((feature) => (
                   <li
                     key={feature}
@@ -122,9 +122,9 @@ export default function PricingPackages() {
                       className={`flex-shrink-0 mt-0.5 ${
                         pkg.popular ? "text-navy-900" : "text-gold-500"
                       }`}
-                      size={20}
+                      size={18}
                     />
-                    <span>{feature}</span>
+                    <span className="text-sm">{feature}</span>
                   </li>
                 ))}
               </ul>
@@ -133,7 +133,7 @@ export default function PricingPackages() {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className={`w-full py-4 rounded-full font-semibold transition-colors ${
+                  className={`btn-primary w-full ${
                     pkg.popular
                       ? "bg-navy-900 text-white hover:bg-navy-800"
                       : "bg-gold-500 text-navy-900 hover:bg-gold-400"

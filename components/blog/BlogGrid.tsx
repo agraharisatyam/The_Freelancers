@@ -81,40 +81,40 @@ export default function BlogGrid() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="mb-16"
+            className="mb-12"
           >
             <Link href={`/blog/${featuredArticle.id}`}>
               <div className="relative group cursor-pointer">
-                <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden">
+                <div className="relative aspect-golden rounded-xl overflow-hidden">
                   <img
                     src={featuredArticle.image}
                     alt={featuredArticle.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/50 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="inline-flex items-center space-x-1 px-3 py-1 bg-gold-500 text-navy-900 rounded-full text-sm font-semibold">
-                      <TrendingUp size={16} />
+                  <div className="absolute top-3 left-3">
+                    <span className="inline-flex items-center space-x-1 px-2 py-1 bg-gold-500 text-navy-900 rounded-full text-xs font-semibold">
+                      <TrendingUp size={14} />
                       <span>Featured</span>
                     </span>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-                    <span className="inline-block px-3 py-1 mb-3 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-sm font-medium">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                    <span className="inline-block px-2 py-0.5 mb-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
                       {featuredArticle.category}
                     </span>
-                    <h2 className="text-3xl md:text-4xl font-bold font-serif mb-4 text-white">
+                    <h2 className="text-2xl md:text-3xl font-bold font-serif mb-2 text-white">
                       {featuredArticle.title}
                     </h2>
-                    <p className="text-lg text-navy-200 mb-4 max-w-2xl">
+                    <p className="text-base text-navy-200 mb-3 max-w-2xl">
                       {featuredArticle.excerpt}
                     </p>
-                    <div className="flex items-center space-x-4 text-navy-300 text-sm">
+                    <div className="flex items-center space-x-4 text-navy-300 text-xs">
                       <div className="flex items-center space-x-1">
-                        <Calendar size={16} />
+                        <Calendar size={14} />
                         <span>{featuredArticle.date}</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <Clock size={16} />
+                        <Clock size={14} />
                         <span>{featuredArticle.readTime}</span>
                       </div>
                     </div>
@@ -125,8 +125,7 @@ export default function BlogGrid() {
           </motion.div>
         )}
 
-        {/* Regular Articles Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-gap">
           {regularArticles.map((article, index) => (
             <motion.article
               key={article.id}
@@ -134,42 +133,42 @@ export default function BlogGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -10, scale: 1.02 }}
+              whileHover={{ y: -5, scale: 1.01 }}
               className="group"
             >
               <Link href={`/blog/${article.id}`}>
-                <div className="relative overflow-hidden rounded-2xl bg-navy-100 dark:bg-navy-800 border border-navy-200 dark:border-navy-700 hover:border-gold-500 transition-all cursor-pointer">
-                  <div className="relative h-48 overflow-hidden">
+                <div className="relative overflow-hidden rounded-xl bg-navy-100 dark:bg-navy-800 border border-navy-200 dark:border-navy-700 hover:border-gold-500 transition-all cursor-pointer">
+                  <div className="relative aspect-golden overflow-hidden">
                     <img
                       src={article.image}
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 dark:bg-navy-900/90 backdrop-blur-md rounded-full text-xs font-semibold text-navy-900 dark:text-white">
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2 py-0.5 bg-white/90 dark:bg-navy-900/90 backdrop-blur-md rounded-full text-xs font-semibold text-navy-900 dark:text-white">
                         {article.category}
                       </span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-2 text-navy-900 dark:text-white group-hover:text-gold-500 transition-colors">
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold mb-2 text-navy-900 dark:text-white group-hover:text-gold-500 transition-colors">
                       {article.title}
                     </h3>
-                    <p className="text-navy-600 dark:text-navy-300 mb-4 text-sm">
+                    <p className="text-navy-600 dark:text-navy-300 mb-3 text-xs">
                       {article.excerpt}
                     </p>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-4 text-xs text-navy-500 dark:text-navy-400">
+                      <div className="flex items-center space-x-3 text-xs text-navy-500 dark:text-navy-400">
                         <div className="flex items-center space-x-1">
-                          <Calendar size={14} />
+                          <Calendar size={12} />
                           <span>{article.date}</span>
                         </div>
                         <div className="flex items-center space-x-1">
-                          <Clock size={14} />
+                          <Clock size={12} />
                           <span>{article.readTime}</span>
                         </div>
                       </div>
-                      <ArrowRight className="text-gold-500 group-hover:translate-x-1 transition-transform" size={20} />
+                      <ArrowRight className="text-gold-500 group-hover:translate-x-1 transition-transform" size={18} />
                     </div>
                   </div>
                 </div>

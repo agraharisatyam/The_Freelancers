@@ -103,8 +103,7 @@ export default function ServicesDetail() {
   return (
     <section className="section-padding bg-white dark:bg-navy-900">
       <div className="container-custom">
-        {/* Tab Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-8 md:mb-10">
           {services.map((service) => {
             const Icon = service.icon;
             return (
@@ -113,20 +112,19 @@ export default function ServicesDetail() {
                 onClick={() => setActiveTab(service.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-semibold transition-all ${
+                className={`flex items-center justify-center space-x-2 px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                   activeTab === service.id
                     ? "bg-gold-500 text-navy-900"
                     : "bg-navy-100 dark:bg-navy-800 text-navy-700 dark:text-navy-200 hover:bg-navy-200 dark:hover:bg-navy-700"
                 }`}
               >
-                <Icon size={20} />
+                <Icon size={18} />
                 <span>{service.title}</span>
               </motion.button>
             );
           })}
         </div>
 
-        {/* Tab Content */}
         <AnimatePresence mode="wait">
           {services
             .filter((service) => service.id === activeTab)
@@ -139,36 +137,36 @@ export default function ServicesDetail() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="grid md:grid-cols-2 gap-8 items-center"
+                  className="grid md:grid-golden grid-gap items-center"
                 >
-                  <div>
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className="p-4 bg-gradient-to-br from-gold-500 to-gold-600 rounded-xl">
-                        <Icon className="text-white" size={32} />
+                  <div className="golden-ratio-width">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <div className="p-3 bg-gradient-to-br from-gold-500 to-gold-600 rounded-lg flex-shrink-0">
+                        <Icon className="text-white" size={24} />
                       </div>
-                      <h2 className="text-3xl font-bold font-serif text-navy-900 dark:text-white">
+                      <h2 className="text-2xl font-bold font-serif text-navy-900 dark:text-white">
                         {service.title}
                       </h2>
                     </div>
-                    <p className="text-xl text-navy-600 dark:text-navy-300 mb-6">
+                    <p className="text-base md:text-lg text-navy-600 dark:text-navy-300 mb-4">
                       {service.description}
                     </p>
-                    <ul className="space-y-3">
+                    <ul className="space-y-2">
                       {service.details.map((detail, index) => (
                         <motion.li
                           key={detail}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: index * 0.1 }}
-                          className="flex items-center space-x-3 text-navy-700 dark:text-navy-200"
+                          className="flex items-center space-x-2 text-sm text-navy-700 dark:text-navy-200"
                         >
-                          <div className="w-2 h-2 bg-gold-500 rounded-full" />
+                          <div className="w-1.5 h-1.5 bg-gold-500 rounded-full flex-shrink-0" />
                           <span>{detail}</span>
                         </motion.li>
                       ))}
                     </ul>
                   </div>
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                  <div className="relative rounded-xl overflow-hidden shadow-xl aspect-golden golden-ratio-width-sm">
                     <img
                       src={service.video}
                       alt={service.title}

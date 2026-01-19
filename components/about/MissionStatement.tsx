@@ -39,12 +39,12 @@ export default function MissionStatement() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto text-center mb-16"
+          className="container-content text-center mb-10 md:mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-6">
+          <h2 className="section-title">
             Our <span className="gradient-text">Mission</span>
           </h2>
-          <p className="text-xl text-navy-600 dark:text-navy-300 leading-relaxed">
+          <p className="section-subtitle">
             To empower businesses and individuals by transforming their visions into stunning digital
             realities. We combine creative excellence with technical expertise to deliver solutions
             that not only meet but exceed expectations, fostering long-term partnerships built on
@@ -52,7 +52,7 @@ export default function MissionStatement() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-gap">
           {values.map((value, index) => {
             const Icon = value.icon;
             return (
@@ -62,18 +62,18 @@ export default function MissionStatement() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -10, scale: 1.05 }}
-                className="text-center p-8 bg-white dark:bg-navy-800 rounded-2xl border border-navy-200 dark:border-navy-700 hover:border-gold-500 transition-all"
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="card card-padding text-center hover:border-gold-500 transition-all"
               >
                 <div
-                  className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${value.color} mb-6`}
+                  className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${value.color} mb-4`}
                 >
-                  <Icon className="text-white" size={32} />
+                  <Icon className="text-white" size={24} />
                 </div>
-                <h3 className="text-2xl font-bold mb-3 text-navy-900 dark:text-white">
+                <h3 className="text-lg font-bold mb-2 text-navy-900 dark:text-white">
                   {value.title}
                 </h3>
-                <p className="text-navy-600 dark:text-navy-300">{value.description}</p>
+                <p className="text-sm text-navy-600 dark:text-navy-300">{value.description}</p>
               </motion.div>
             );
           })}

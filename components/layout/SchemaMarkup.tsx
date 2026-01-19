@@ -7,11 +7,11 @@ export default function SchemaMarkup() {
     const schema = {
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
-      name: "FreelancePro",
+      name: "SAJSOFTWARES",
       description:
         "Premium freelancing services specializing in web development, graphic design, and business consulting",
-      url: "https://freelancepro.com",
-      logo: "https://freelancepro.com/logo.png",
+      url: "https://sajsoftwares.com",
+      logo: "https://sajsoftwares.com/Gemini_Generated_Image_los0s3los0s3los0.png",
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+1-555-123-4567",

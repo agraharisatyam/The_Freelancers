@@ -20,17 +20,17 @@ export default function BenefitsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="section-header"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
+          <h2 className="section-title">
             Proven <span className="gradient-text">Results</span>
           </h2>
-          <p className="text-xl text-navy-600 dark:text-navy-300 max-w-2xl mx-auto">
+          <p className="section-subtitle">
             Numbers that speak for themselves
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-gap">
           {benefits.map((benefit, index) => (
             <BenefitCard key={benefit.label} benefit={benefit} index={index} />
           ))}
@@ -56,13 +56,13 @@ function BenefitCard({
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay: index * 0.1, duration: 0.6 }}
-      whileHover={{ y: -5, scale: 1.05 }}
-      className="p-8 bg-gradient-to-br from-navy-50 to-white dark:from-navy-800 dark:to-navy-900 rounded-2xl border border-navy-200 dark:border-navy-700 text-center"
+      whileHover={{ y: -3, scale: 1.02 }}
+      className="p-6 bg-gradient-to-br from-navy-50 to-white dark:from-navy-800 dark:to-navy-900 rounded-xl border border-navy-200 dark:border-navy-700 text-center"
     >
-      <div className={`text-5xl font-bold mb-2 bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent`}>
+      <div className={`text-4xl font-bold mb-2 bg-gradient-to-r ${benefit.color} bg-clip-text text-transparent`}>
         {isInView ? `${benefit.value}%` : "0%"}
       </div>
-      <p className="text-navy-700 dark:text-navy-200 font-medium">{benefit.label}</p>
+      <p className="text-sm text-navy-700 dark:text-navy-200 font-medium">{benefit.label}</p>
       <div className="mt-4 h-2 bg-navy-200 dark:bg-navy-700 rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}

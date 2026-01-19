@@ -20,12 +20,12 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Premium Freelancing Services | Transform Your Vision into Reality",
+  title: "SAJSOFTWARES | Premium Freelancing Services | Transform Your Vision into Reality",
   description: "Professional freelancing company specializing in web development, graphic design, and consulting. Stunning visuals, expert craftsmanship, and proven results.",
-  keywords: "freelancing, web development, graphic design, consulting, professional services",
-  authors: [{ name: "Freelancing Company" }],
+  keywords: "freelancing, web development, graphic design, consulting, professional services, SAJSOFTWARES",
+  authors: [{ name: "SAJSOFTWARES" }],
   openGraph: {
-    title: "Premium Freelancing Services",
+    title: "SAJSOFTWARES - Premium Freelancing Services",
     description: "Transform your vision into reality with our expert freelancing services",
     type: "website",
   },

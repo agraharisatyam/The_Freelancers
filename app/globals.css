@@ -4,17 +4,140 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-playfair: "Playfair Display", serif;
+    /* Golden Ratio: 1.618 (Phi) */
+    --phi: 1.618;
+    /* Container width: 1280px */
+    --container-width: 1280px;
+    /* Golden Ratio calculations for 1280px container:
+       - Main content: 1280 / 1.618 = 790px (61.8%)
+       - Sidebar: 1280 - 790 = 490px (38.2%) */
+    --content-width: 790px;
+    --sidebar-width: 490px;
+    /* Base spacing using Golden Ratio */
+    --spacing-base: 1rem;
+    --spacing-sm: calc(var(--spacing-base) / var(--phi));
+    --spacing-md: var(--spacing-base);
+    --spacing-lg: calc(var(--spacing-base) * var(--phi));
+    --spacing-xl: calc(var(--spacing-base) * var(--phi) * var(--phi));
+    --spacing-2xl: calc(var(--spacing-base) * var(--phi) * var(--phi) * var(--phi));
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-white dark:bg-navy-900 text-navy-900 dark:text-white transition-colors duration-300;
+    @apply bg-white dark:bg-navy-950 text-navy-900 dark:text-white;
+    line-height: 1.5;
+  }
+}
+
+@layer components {
+  /* Standard Container - Golden Ratio based (1280px max-width)
+     Example: 960px layout → content 593px (61.8%), sidebar 367px (38.2%) */
+  .container-custom {
+    @apply mx-auto px-4 sm:px-5 md:px-6 lg:px-8;
+    width: 100%;
+    max-width: var(--container-width);
+  }
+
+  /* Content Container - Golden Ratio: 61.8% of container (790px)
+     Example: 760px height → main section 470px (61.8%), secondary 290px (38.2%) */
+  .container-content {
+    @apply mx-auto px-4 sm:px-5 md:px-6;
+    max-width: var(--content-width);
+  }
+
+  /* Golden Ratio Grid - For 2-column layouts */
+  .grid-golden {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .grid-golden {
+      grid-template-columns: 1.618fr 1fr; /* 61.8% : 38.2% */
+    }
+  }
+
+  /* Golden Ratio Grid Reverse - Sidebar first */
+  .grid-golden-reverse {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    .grid-golden-reverse {
+      grid-template-columns: 1fr 1.618fr; /* 38.2% : 61.8% */
+    }
+  }
+
+  /* Section Padding - Golden Ratio based vertical spacing */
+  .section-padding {
+    @apply py-12 md:py-16;
+    /* Base: 48px (3rem) → 48 * 1.618 ≈ 78px (4.875rem) for larger screens */
+  }
+
+  /* Section Header - Consistent heading styles */
+  .section-header {
+    @apply text-center mb-10 md:mb-12;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold font-serif mb-3;
+  }
+
+  .section-subtitle {
+    @apply text-base md:text-lg text-navy-600 dark:text-navy-300 max-w-2xl mx-auto;
+  }
+
+  /* Gradient Text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-gold-500 to-gold-600 bg-clip-text text-transparent;
+  }
+
+  /* Standardized Button Sizes */
+  .btn-primary {
+    @apply px-5 py-2.5 md:px-6 md:py-3 text-sm md:text-base font-semibold rounded-full;
+    min-height: 44px;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 md:px-5 md:py-2.5 text-xs md:text-sm font-medium rounded-full;
+    min-height: 40px;
+  }
+
+  /* Standardized Form Inputs */
+  .form-input {
+    @apply w-full px-4 py-2.5 text-sm bg-navy-50 dark:bg-navy-900 border border-navy-200 dark:border-navy-700 rounded-lg;
+    @apply focus:outline-none focus:border-gold-500 transition-colors;
+    @apply text-navy-900 dark:text-white placeholder-navy-400;
+  }
+
+  .form-label {
+    @apply block text-xs font-semibold mb-1.5 text-navy-900 dark:text-white;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-white dark:bg-navy-800 rounded-xl border border-navy-200 dark:border-navy-700;
+  }
+
+  .card-padding {
+    @apply p-5 md:p-6;
+  }
+
+  /* Grid Gaps - Consistent spacing */
+  .grid-gap {
+    @apply gap-5 md:gap-6;
+  }
+
+  .grid-gap-sm {
+    @apply gap-4 md:gap-5;
   }
 }
 
@@ -23,59 +146,36 @@
     text-wrap: balance;
   }
 
-  .gradient-text {
-    @apply bg-gradient-to-r from-gold-500 to-gold-300 bg-clip-text text-transparent;
+  /* Golden Ratio utilities */
+  .golden-ratio-width {
+    width: 61.8%; /* Main content area */
   }
 
-  .section-padding {
-    @apply py-20 md:py-32;
+  .golden-ratio-width-sm {
+    width: 38.2%; /* Sidebar/secondary area */
   }
 
-  .container-custom {
-    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  .golden-ratio-height {
+    height: 61.8%; /* Main section height */
+  }
+
+  .golden-ratio-height-sm {
+    height: 38.2%; /* Secondary section height */
+  }
+
+  /* Golden Ratio Aspect Ratio */
+  .aspect-golden {
+    aspect-ratio: 1.618 / 1; /* Width:Height = 1.618:1 */
+  }
+
+  .aspect-golden-vertical {
+    aspect-ratio: 1 / 1.618; /* Height:Width = 1.618:1 */
+  }
+
+  /* Rule of Thirds grid */
+  .rule-of-thirds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
   }
 }
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-navy-50 dark:bg-navy-800;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-navy-400 dark:bg-navy-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-navy-500 dark:bg-navy-500;
-}
-
-/* Loading animation */
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    transparent 100%
-  );
-  background-size: 1000px 100%;
-}
-

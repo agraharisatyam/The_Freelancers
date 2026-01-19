@@ -47,13 +47,13 @@ export default function ContactInfo() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="space-y-8"
+      className="space-y-5 md:space-y-6"
     >
-      <div className="bg-white dark:bg-navy-800 rounded-2xl p-8 shadow-2xl">
-        <h2 className="text-3xl font-bold font-serif mb-6 text-navy-900 dark:text-white">
+      <div className="card card-padding shadow-lg">
+        <h2 className="text-2xl font-bold font-serif mb-5 text-navy-900 dark:text-white">
           Contact Information
         </h2>
-        <div className="space-y-6">
+        <div className="space-y-3 md:space-y-4">
           {contactMethods.map((method, index) => {
             const Icon = method.icon;
             return (
@@ -65,17 +65,17 @@ export default function ContactInfo() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ x: 5 }}
-                className="flex items-start space-x-4 p-4 bg-navy-50 dark:bg-navy-900 rounded-xl hover:bg-navy-100 dark:hover:bg-navy-700 transition-colors group"
+                className="flex items-start space-x-3 p-3 bg-navy-50 dark:bg-navy-900 rounded-lg hover:bg-navy-100 dark:hover:bg-navy-700 transition-colors group"
               >
-                <div className="p-3 bg-gold-500 rounded-lg group-hover:scale-110 transition-transform">
-                  <Icon className="text-navy-900" size={24} />
+                <div className="p-2 bg-gold-500 rounded-lg group-hover:scale-110 transition-transform flex-shrink-0">
+                  <Icon className="text-navy-900" size={20} />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-lg mb-1 text-navy-900 dark:text-white">
+                <div className="flex-1">
+                  <h3 className="font-semibold text-base mb-1 text-navy-900 dark:text-white">
                     {method.title}
                   </h3>
-                  <p className="text-gold-500 font-medium mb-1">{method.info}</p>
-                  <p className="text-sm text-navy-600 dark:text-navy-300">
+                  <p className="text-gold-500 font-medium mb-0.5 text-sm">{method.info}</p>
+                  <p className="text-xs text-navy-600 dark:text-navy-300">
                     {method.description}
                   </p>
                 </div>
@@ -85,37 +85,37 @@ export default function ContactInfo() {
         </div>
       </div>
 
-      <div className="bg-white dark:bg-navy-800 rounded-2xl p-8 shadow-2xl">
-        <div className="flex items-center space-x-3 mb-6">
-          <Clock className="text-gold-500" size={28} />
-          <h2 className="text-2xl font-bold font-serif text-navy-900 dark:text-white">
+      <div className="card card-padding shadow-lg">
+        <div className="flex items-center space-x-2 mb-5">
+          <Clock className="text-gold-500 flex-shrink-0" size={22} />
+          <h2 className="text-xl font-bold font-serif text-navy-900 dark:text-white">
             Business Hours
           </h2>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-2">
           {hours.map((hour) => (
             <div
               key={hour.day}
-              className="flex justify-between items-center p-3 bg-navy-50 dark:bg-navy-900 rounded-lg"
+              className="flex justify-between items-center p-2.5 bg-navy-50 dark:bg-navy-900 rounded-lg"
             >
-              <span className="font-medium text-navy-900 dark:text-white">{hour.day}</span>
-              <span className="text-navy-600 dark:text-navy-300">{hour.time}</span>
+              <span className="font-medium text-sm text-navy-900 dark:text-white">{hour.day}</span>
+              <span className="text-xs text-navy-600 dark:text-navy-300">{hour.time}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-gold-500 to-gold-600 rounded-2xl p-8 text-center">
-        <h3 className="text-2xl font-bold font-serif mb-3 text-navy-900">
+      <div className="bg-gradient-to-br from-gold-500 to-gold-600 rounded-xl p-5 md:p-6 text-center">
+        <h3 className="text-xl font-bold font-serif mb-2 text-navy-900">
           Ready to Start Your Project?
         </h3>
-        <p className="text-navy-800 mb-6">
+        <p className="text-navy-800 mb-4 text-sm">
           Book a free consultation call with our team to discuss your project needs.
         </p>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="px-8 py-4 bg-navy-900 text-white rounded-full font-semibold hover:bg-navy-800 transition-colors"
+          className="btn-primary bg-navy-900 text-white hover:bg-navy-800"
         >
           Schedule a Call
         </motion.button>

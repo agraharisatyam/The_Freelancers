@@ -3,144 +3,101 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
-import { useState, useEffect } from "react";
 
 export default function Hero() {
-  const [particles, setParticles] = useState<Array<{ x: number; y: number; duration: number; delay: number }>>([]);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    // Generate random positions only on client side to avoid hydration mismatch
-    const particleData = Array.from({ length: 50 }, () => ({
-      x: Math.random() * 1920,
-      y: Math.random() * 1080,
-      duration: Math.random() * 3 + 2,
-      delay: Math.random() * 2,
-    }));
-    setParticles(particleData);
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with parallax effect */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950" />
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1920')] bg-cover bg-center opacity-20 mix-blend-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-transparent to-transparent" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-navy-50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950">
+      {/* Background decoration - Rule of Thirds placement */}
+      <div className="absolute inset-0 opacity-5">
+        {/* Positioned at rule of thirds intersections */}
+        <div className="absolute top-[33%] left-[33%] w-72 h-72 bg-gold-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-[33%] right-[33%] w-96 h-96 bg-blue-500 rounded-full blur-3xl" />
       </div>
 
-      {/* Animated particles effect */}
-      {mounted && (
-        <div className="absolute inset-0 z-10">
-          {particles.map((particle, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-gold-500 rounded-full"
-              initial={{
-                x: particle.x,
-                y: particle.y,
-                opacity: 0,
-              }}
-              animate={{
-                y: [null, Math.random() * 1080],
-                opacity: [0, 0.5, 0],
-              }}
-              transition={{
-                duration: particle.duration,
-                repeat: Infinity,
-                delay: particle.delay,
-              }}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Content */}
-      <div className="relative z-20 container-custom text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
-        >
-          <motion.span
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-block px-4 py-2 mb-6 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-sm font-medium"
+      <div className="container-custom relative z-10 pt-20 md:pt-24 pb-12 md:pb-16">
+        <div className="container-content text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-5 md:mb-6"
           >
-            Premium Freelancing Services
-          </motion.span>
+            <span className="inline-flex items-center space-x-2 px-3 py-1.5 bg-gold-500/10 border border-gold-500/20 rounded-full text-gold-600 dark:text-gold-400 text-xs font-medium">
+              <span>✨</span>
+              <span>Premium Freelancing Services</span>
+            </span>
+          </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-bold font-serif mb-6 text-white"
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif mb-5 md:mb-6 text-navy-900 dark:text-white leading-tight"
           >
-            Elevate Your Vision with{" "}
-            <span className="gradient-text">Expert Freelance Mastery</span>
+            Transform Your{" "}
+            <span className="gradient-text">Vision into Reality</span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-navy-200 mb-10 max-w-2xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-base md:text-lg text-navy-600 dark:text-navy-300 mb-7 md:mb-8 max-w-2xl mx-auto"
           >
-            Transform your ideas into stunning reality. We deliver premium web development, graphic
-            design, and consulting services that drive results.
+            Expert freelancing services that deliver stunning results. From web development to
+            graphic design, we bring your ideas to life with premium quality and unmatched
+            craftsmanship.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7, duration: 0.8 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4"
           >
-            <Link href="/contact">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="group px-8 py-4 bg-gold-500 text-navy-900 rounded-full font-semibold text-lg flex items-center space-x-2 hover:bg-gold-400 transition-colors"
-              >
-                <span>Get Started Today</span>
-                <ArrowRight className="group-hover:translate-x-1 transition-transform" size={20} />
-              </motion.button>
-            </Link>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-full font-semibold text-lg flex items-center space-x-2 hover:bg-white/20 transition-colors"
+            <Link
+              href="/contact"
+              className="btn-primary group inline-flex items-center justify-center space-x-2 bg-gold-500 text-navy-900 hover:bg-gold-400 transition-all hover:scale-105 shadow-md hover:shadow-lg"
             >
-              <Play size={20} />
-              <span>Watch Our Story</span>
-            </motion.button>
+              <span>Get Started</span>
+              <ArrowRight className="group-hover:translate-x-1 transition-transform" size={18} />
+            </Link>
+            <Link
+              href="/portfolio"
+              className="btn-secondary inline-flex items-center justify-center space-x-2 text-navy-600 dark:text-navy-300 hover:text-gold-500 dark:hover:text-gold-400 transition-colors bg-transparent border border-navy-200 dark:border-navy-700"
+            >
+              <Play size={16} />
+              <span>View Our Work</span>
+            </Link>
           </motion.div>
-        </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        >
           <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-6 h-10 border-2 border-gold-500 rounded-full flex justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="grid grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16 pt-10 md:pt-12 border-t border-navy-200 dark:border-navy-800"
           >
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="w-1 h-3 bg-gold-500 rounded-full mt-2"
-            />
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold font-serif gradient-text mb-1.5 md:mb-2">
+                100+
+              </div>
+              <div className="text-xs text-navy-600 dark:text-navy-400">Happy Clients</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold font-serif gradient-text mb-1.5 md:mb-2">
+                500+
+              </div>
+              <div className="text-xs text-navy-600 dark:text-navy-400">Projects Delivered</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold font-serif gradient-text mb-1.5 md:mb-2">
+                5★
+              </div>
+              <div className="text-xs text-navy-600 dark:text-navy-400">Average Rating</div>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
-

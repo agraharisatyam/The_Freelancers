@@ -109,15 +109,14 @@ export default function PortfolioGrid() {
   return (
     <section className="section-padding bg-white dark:bg-navy-900">
       <div className="container-custom">
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-8 md:mb-10">
           {categories.map((category) => (
             <motion.button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={`px-6 py-3 rounded-full font-semibold transition-all ${
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
                 selectedCategory === category.id
                   ? "bg-gold-500 text-navy-900"
                   : "bg-navy-100 dark:bg-navy-800 text-navy-700 dark:text-navy-200 hover:bg-navy-200 dark:hover:bg-navy-700"
@@ -128,10 +127,9 @@ export default function PortfolioGrid() {
           ))}
         </div>
 
-        {/* Portfolio Grid */}
         <motion.div
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-gap"
         >
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
@@ -146,19 +144,19 @@ export default function PortfolioGrid() {
                 onClick={() => setSelectedProject(project)}
                 className="group relative cursor-pointer"
               >
-                <div className="relative overflow-hidden rounded-2xl bg-navy-100 dark:bg-navy-800 aspect-[4/3]">
+                <div className="relative overflow-hidden rounded-2xl bg-navy-100 dark:bg-navy-800 aspect-golden">
                   <img
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="inline-block px-3 py-1 mb-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
+                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span className="inline-block px-2 py-0.5 mb-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
                       {project.category}
                     </span>
-                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-sm text-navy-200">{project.description}</p>
+                    <h3 className="text-lg font-bold text-white mb-1">{project.title}</h3>
+                    <p className="text-xs text-navy-200">{project.description}</p>
                   </div>
                 </div>
               </motion.div>
@@ -200,49 +198,49 @@ export default function PortfolioGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
               </div>
 
-              <div className="p-8">
-                <div className="flex items-center justify-between mb-4">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
                   <div>
-                    <span className="inline-block px-3 py-1 mb-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
+                    <span className="inline-block px-2 py-0.5 mb-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
                       {selectedProject.category}
                     </span>
-                    <h2 className="text-3xl font-bold font-serif mb-2 text-navy-900 dark:text-white">
+                    <h2 className="text-2xl font-bold font-serif mb-2 text-navy-900 dark:text-white">
                       {selectedProject.title}
                     </h2>
                   </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-4 mb-6">
-                  <div className="flex items-center space-x-2 text-navy-600 dark:text-navy-300">
-                    <Users size={20} />
+                <div className="grid md:grid-cols-2 gap-3 mb-4">
+                  <div className="flex items-center space-x-2 text-sm text-navy-600 dark:text-navy-300">
+                    <Users size={18} />
                     <span>{selectedProject.client}</span>
                   </div>
-                  <div className="flex items-center space-x-2 text-navy-600 dark:text-navy-300">
-                    <Calendar size={20} />
+                  <div className="flex items-center space-x-2 text-sm text-navy-600 dark:text-navy-300">
+                    <Calendar size={18} />
                     <span>{selectedProject.year}</span>
                   </div>
                 </div>
 
-                <p className="text-lg text-navy-700 dark:text-navy-200 mb-8">
+                <p className="text-base text-navy-700 dark:text-navy-200 mb-6">
                   {selectedProject.description}
                 </p>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
                   {Object.entries(selectedProject.metrics).map(([key, value]) => (
                     <div
                       key={key}
-                      className="p-4 bg-gradient-to-br from-gold-500 to-gold-600 rounded-xl text-center"
+                      className="p-3 bg-gradient-to-br from-gold-500 to-gold-600 rounded-lg text-center"
                     >
-                      <TrendingUp className="mx-auto mb-2 text-navy-900" size={24} />
-                      <div className="text-2xl font-bold text-navy-900">{value}</div>
-                      <div className="text-sm text-navy-800 capitalize">{key}</div>
+                      <TrendingUp className="mx-auto mb-1 text-navy-900" size={20} />
+                      <div className="text-xl font-bold text-navy-900">{value}</div>
+                      <div className="text-xs text-navy-800 capitalize">{key}</div>
                     </div>
                   ))}
                 </div>
 
-                <button className="w-full md:w-auto px-8 py-4 bg-gold-500 text-navy-900 rounded-full font-semibold hover:bg-gold-400 transition-colors flex items-center justify-center space-x-2">
+                <button className="w-full md:w-auto px-6 py-3 bg-gold-500 text-navy-900 rounded-full text-sm font-semibold hover:bg-gold-400 transition-colors flex items-center justify-center space-x-2">
                   <span>View Case Study</span>
-                  <ExternalLink size={20} />
+                  <ExternalLink size={18} />
                 </button>
               </div>
             </motion.div>

@@ -58,9 +58,9 @@ export default function ContactForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8 }}
-      className="bg-white dark:bg-navy-800 rounded-2xl p-8 shadow-2xl"
+      className="card card-padding shadow-lg"
     >
-      <h2 className="text-3xl font-bold font-serif mb-6 text-navy-900 dark:text-white">
+      <h2 className="text-2xl font-bold font-serif mb-5 text-navy-900 dark:text-white">
         Send us a Message
       </h2>
 
@@ -68,38 +68,38 @@ export default function ContactForm() {
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="text-center py-12"
+          className="text-center py-8"
         >
-          <CheckCircle className="mx-auto mb-4 text-gold-500" size={64} />
-          <h3 className="text-2xl font-bold mb-2 text-navy-900 dark:text-white">
+          <CheckCircle className="mx-auto mb-3 text-gold-500" size={48} />
+          <h3 className="text-xl font-bold mb-2 text-navy-900 dark:text-white">
             Thank You!
           </h3>
-          <p className="text-navy-600 dark:text-navy-300 mb-6">
+          <p className="text-sm text-navy-600 dark:text-navy-300 mb-5">
             We&apos;ve received your message and will get back to you within 24 hours.
           </p>
           <button
             onClick={() => setSubmitted(false)}
-            className="px-6 py-3 bg-gold-500 text-navy-900 rounded-full font-semibold hover:bg-gold-400 transition-colors"
+            className="btn-primary bg-gold-500 text-navy-900 hover:bg-gold-400"
           >
             Send Another Message
           </button>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {error && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-center space-x-2 text-red-700 dark:text-red-400"
+              className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg flex items-center space-x-2 text-sm text-red-700 dark:text-red-400"
             >
-              <AlertCircle size={20} />
+              <AlertCircle size={18} />
               <span>{error}</span>
             </motion.div>
           )}
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 grid-gap-sm">
             <div>
-              <label className="block text-sm font-semibold mb-2 text-navy-900 dark:text-white">
+              <label className="form-label">
                 Name <span className="text-red-500">*</span>
               </label>
               <input
@@ -108,12 +108,12 @@ export default function ContactForm() {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-navy-50 dark:bg-navy-900 border border-navy-200 dark:border-navy-700 rounded-lg focus:outline-none focus:border-gold-500 transition-colors text-navy-900 dark:text-white"
+                className="form-input"
                 placeholder="Your name"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-2 text-navy-900 dark:text-white">
+              <label className="form-label">
                 Email <span className="text-red-500">*</span>
               </label>
               <input
@@ -122,28 +122,26 @@ export default function ContactForm() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-navy-50 dark:bg-navy-900 border border-navy-200 dark:border-navy-700 rounded-lg focus:outline-none focus:border-gold-500 transition-colors text-navy-900 dark:text-white"
+                className="form-input"
                 placeholder="your@email.com"
               />
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 grid-gap-sm">
             <div>
-              <label className="block text-sm font-semibold mb-2 text-navy-900 dark:text-white">
-                Phone
-              </label>
+              <label className="form-label">Phone</label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full px-4 py-3 bg-navy-50 dark:bg-navy-900 border border-navy-200 dark:border-navy-700 rounded-lg focus:outline-none focus:border-gold-500 transition-colors text-navy-900 dark:text-white"
+                className="form-input"
                 placeholder="+1 (555) 123-4567"
               />
             </div>
             <div>
-              <label className="block text-sm font-semibold mb-2 text-navy-900 dark:text-white">
+              <label className="form-label">
                 Service Type <span className="text-red-500">*</span>
               </label>
               <select
@@ -151,7 +149,7 @@ export default function ContactForm() {
                 value={formData.service}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 bg-navy-50 dark:bg-navy-900 border border-navy-200 dark:border-navy-700 rounded-lg focus:outline-none focus:border-gold-500 transition-colors text-navy-900 dark:text-white"
+                className="form-input"
               >
                 <option value="web">Web Development</option>
                 <option value="design">Graphic Design</option>
@@ -164,14 +162,12 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold mb-2 text-navy-900 dark:text-white">
-              Budget Range
-            </label>
+            <label className="form-label">Budget Range</label>
             <select
               name="budget"
               value={formData.budget}
               onChange={handleChange}
-              className="w-full px-4 py-3 bg-navy-50 dark:bg-navy-900 border border-navy-200 dark:border-navy-700 rounded-lg focus:outline-none focus:border-gold-500 transition-colors text-navy-900 dark:text-white"
+              className="form-input"
             >
               <option value="">Select budget range</option>
               <option value="under-5k">Under $5,000</option>
@@ -183,7 +179,7 @@ export default function ContactForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-semibold mb-2 text-navy-900 dark:text-white">
+            <label className="form-label">
               Message <span className="text-red-500">*</span>
             </label>
             <textarea
@@ -191,8 +187,8 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               required
-              rows={6}
-              className="w-full px-4 py-3 bg-navy-50 dark:bg-navy-900 border border-navy-200 dark:border-navy-700 rounded-lg focus:outline-none focus:border-gold-500 transition-colors text-navy-900 dark:text-white resize-none"
+              rows={5}
+              className="form-input resize-none"
               placeholder="Tell us about your project..."
             />
           </div>
@@ -201,9 +197,9 @@ export default function ContactForm() {
             type="submit"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full px-8 py-4 bg-gold-500 text-navy-900 rounded-full font-semibold hover:bg-gold-400 transition-colors flex items-center justify-center space-x-2"
+            className="btn-primary w-full bg-gold-500 text-navy-900 hover:bg-gold-400 flex items-center justify-center space-x-2"
           >
-            <Send size={20} />
+            <Send size={18} />
             <span>Send Message</span>
           </motion.button>
         </form>

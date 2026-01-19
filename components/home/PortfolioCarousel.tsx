@@ -55,17 +55,17 @@ export default function PortfolioCarousel() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="section-header"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
+          <h2 className="section-title">
             Featured <span className="gradient-text">Portfolio</span>
           </h2>
-          <p className="text-xl text-navy-600 dark:text-navy-300 max-w-2xl mx-auto">
+          <p className="section-subtitle">
             Showcasing our best work and client success stories
           </p>
         </motion.div>
 
-        <div className="relative max-w-6xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentIndex}
@@ -73,61 +73,62 @@ export default function PortfolioCarousel() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
-              className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl"
+              className="relative aspect-golden rounded-xl overflow-hidden shadow-xl"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${projects[currentIndex].image})` }}
+                style={{ 
+                  backgroundImage: `url(${projects[currentIndex].image})`,
+                  backgroundPosition: "center"
+                }}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/50 to-transparent" />
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 text-white">
-                <span className="inline-block px-3 py-1 mb-3 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-sm font-medium">
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
+                <span className="inline-block px-2.5 py-1 mb-3 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
                   {projects[currentIndex].category}
                 </span>
-                <h3 className="text-3xl md:text-4xl font-bold font-serif mb-3">
+                <h3 className="text-2xl md:text-3xl font-bold font-serif mb-2">
                   {projects[currentIndex].title}
                 </h3>
-                <p className="text-lg text-navy-200 mb-6 max-w-2xl">
+                <p className="text-sm md:text-base text-navy-200 mb-4 max-w-2xl">
                   {projects[currentIndex].description}
                 </p>
                 <Link
                   href="/portfolio"
-                  className="inline-flex items-center space-x-2 px-6 py-3 bg-gold-500 text-navy-900 rounded-full font-semibold hover:bg-gold-400 transition-colors"
+                  className="btn-primary inline-flex items-center justify-center space-x-2 bg-gold-500 text-navy-900 hover:bg-gold-400 shadow-md hover:shadow-lg"
                 >
                   <span>View Project</span>
-                  <ExternalLink size={20} />
+                  <ExternalLink size={16} />
                 </Link>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation */}
           <button
             onClick={prevProject}
-            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 dark:bg-navy-800/90 backdrop-blur-md rounded-full shadow-lg hover:bg-white dark:hover:bg-navy-800 transition-colors z-10"
+            className="absolute left-2 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 dark:bg-navy-800/90 backdrop-blur-md rounded-full shadow-lg hover:bg-white dark:hover:bg-navy-800 transition-colors z-10"
             aria-label="Previous project"
           >
-            <ChevronLeft size={24} className="text-navy-900 dark:text-white" />
+            <ChevronLeft size={20} className="text-navy-900 dark:text-white" />
           </button>
           <button
             onClick={nextProject}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/90 dark:bg-navy-800/90 backdrop-blur-md rounded-full shadow-lg hover:bg-white dark:hover:bg-navy-800 transition-colors z-10"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-white/90 dark:bg-navy-800/90 backdrop-blur-md rounded-full shadow-lg hover:bg-white dark:hover:bg-navy-800 transition-colors z-10"
             aria-label="Next project"
           >
-            <ChevronRight size={24} className="text-navy-900 dark:text-white" />
+            <ChevronRight size={20} className="text-navy-900 dark:text-white" />
           </button>
 
-          {/* Dots indicator */}
-          <div className="flex justify-center space-x-2 mt-8">
+          <div className="flex justify-center space-x-2 mt-6">
             {projects.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
+                className={`h-1.5 rounded-full transition-all ${
                   index === currentIndex
                     ? "bg-gold-500 w-8"
-                    : "bg-navy-300 dark:bg-navy-600"
+                    : "bg-navy-300 dark:bg-navy-600 w-1.5"
                 }`}
                 aria-label={`Go to project ${index + 1}`}
               />

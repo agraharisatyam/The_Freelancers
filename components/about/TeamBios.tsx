@@ -50,17 +50,17 @@ export default function TeamBios() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="section-header"
         >
-          <h2 className="text-4xl md:text-5xl font-bold font-serif mb-4">
+          <h2 className="section-title">
             Meet Our <span className="gradient-text">Team</span>
           </h2>
-          <p className="text-xl text-navy-600 dark:text-navy-300 max-w-2xl mx-auto">
+          <p className="section-subtitle">
             Talented professionals dedicated to your success
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 grid-gap">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -71,9 +71,8 @@ export default function TeamBios() {
               whileHover={{ y: -10 }}
               className="group relative"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-50 to-white dark:from-navy-800 dark:to-navy-900 border border-navy-200 dark:border-navy-700">
-                {/* Image */}
-                <div className="relative h-80 overflow-hidden">
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-navy-50 to-white dark:from-navy-800 dark:to-navy-900 border border-navy-200 dark:border-navy-700">
+                <div className="relative aspect-golden overflow-hidden">
                   <img
                     src={member.image}
                     alt={member.name}
@@ -82,39 +81,36 @@ export default function TeamBios() {
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-1 text-navy-900 dark:text-white">
+                <div className="p-5">
+                  <h3 className="text-lg font-bold mb-1 text-navy-900 dark:text-white">
                     {member.name}
                   </h3>
-                  <p className="text-gold-500 font-semibold mb-3">{member.role}</p>
-                  <p className="text-sm text-navy-600 dark:text-navy-300 mb-4">
+                  <p className="text-gold-500 font-semibold mb-2 text-sm">{member.role}</p>
+                  <p className="text-xs text-navy-600 dark:text-navy-300 mb-3">
                     {member.bio}
                   </p>
 
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1.5 mb-3">
                     {member.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1 bg-navy-100 dark:bg-navy-700 text-navy-700 dark:text-navy-200 rounded-full text-xs font-medium"
+                        className="px-2 py-0.5 bg-navy-100 dark:bg-navy-700 text-navy-700 dark:text-navy-200 rounded-full text-xs font-medium"
                       >
                         {skill}
                       </span>
                     ))}
                   </div>
 
-                  {/* Social Links */}
-                  <div className="flex space-x-3">
+                  <div className="flex space-x-2">
                     {member.linkedin && (
                       <motion.a
                         href={member.linkedin}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 bg-navy-100 dark:bg-navy-700 rounded-full hover:bg-gold-500 transition-colors"
+                        className="p-1.5 bg-navy-100 dark:bg-navy-700 rounded-full hover:bg-gold-500 transition-colors"
                         aria-label="LinkedIn"
                       >
-                        <Linkedin size={18} className="text-navy-700 dark:text-navy-200" />
+                        <Linkedin size={16} className="text-navy-700 dark:text-navy-200" />
                       </motion.a>
                     )}
                     {member.email && (
@@ -122,10 +118,10 @@ export default function TeamBios() {
                         href={`mailto:${member.email}`}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 bg-navy-100 dark:bg-navy-700 rounded-full hover:bg-gold-500 transition-colors"
+                        className="p-1.5 bg-navy-100 dark:bg-navy-700 rounded-full hover:bg-gold-500 transition-colors"
                         aria-label="Email"
                       >
-                        <Mail size={18} className="text-navy-700 dark:text-navy-200" />
+                        <Mail size={16} className="text-navy-700 dark:text-navy-200" />
                       </motion.a>
                     )}
                     {member.github && (
@@ -133,10 +129,10 @@ export default function TeamBios() {
                         href={member.github}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
-                        className="p-2 bg-navy-100 dark:bg-navy-700 rounded-full hover:bg-gold-500 transition-colors"
+                        className="p-1.5 bg-navy-100 dark:bg-navy-700 rounded-full hover:bg-gold-500 transition-colors"
                         aria-label="GitHub"
                       >
-                        <Github size={18} className="text-navy-700 dark:text-navy-200" />
+                        <Github size={16} className="text-navy-700 dark:text-navy-200" />
                       </motion.a>
                     )}
                   </div>
