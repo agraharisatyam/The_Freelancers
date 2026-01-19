@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, TrendingUp, Users, Calendar } from "lucide-react";
 
@@ -145,10 +146,11 @@ export default function PortfolioGrid() {
                 className="group relative cursor-pointer"
               >
                 <div className="relative overflow-hidden rounded-2xl bg-navy-100 dark:bg-navy-800 aspect-golden">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
@@ -190,10 +192,11 @@ export default function PortfolioGrid() {
               </button>
 
               <div className="relative h-96">
-                <img
+                <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
               </div>

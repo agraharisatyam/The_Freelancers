@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from "lucide-react";
 
@@ -45,10 +46,12 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <Link href="/" className="inline-block mb-4">
-              <div className="h-7 md:h-8 w-auto">
-                <img
+              <div className="h-7 md:h-8 w-auto relative">
+                <Image
                   src="/Gemini_Generated_Image_los0s3los0s3los0.png"
                   alt="SAJSOFTWARES Logo"
+                  width={120}
+                  height={32}
                   className="h-full w-auto object-contain"
                 />
               </div>

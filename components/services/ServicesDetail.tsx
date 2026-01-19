@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Code, Palette, Briefcase, BarChart3, Smartphone, Zap, ChevronDown } from "lucide-react";
 
@@ -167,10 +168,11 @@ export default function ServicesDetail() {
                     </ul>
                   </div>
                   <div className="relative rounded-xl overflow-hidden shadow-xl aspect-golden golden-ratio-width-sm">
-                    <img
+                    <Image
                       src={service.video}
                       alt={service.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-navy-900/50 to-transparent" />
                   </div>

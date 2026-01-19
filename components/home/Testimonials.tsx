@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Star, Quote } from "lucide-react";
 
 const testimonials = [
@@ -45,7 +46,7 @@ export default function Testimonials() {
             What Our <span className="gradient-text">Clients Say</span>
           </h2>
           <p className="section-subtitle">
-            Don't just take our word for it—hear from our satisfied clients
+            Don&apos;t just take our word for it—hear from our satisfied clients
           </p>
         </motion.div>
 
@@ -67,13 +68,15 @@ export default function Testimonials() {
                   ))}
                 </div>
                 <p className="text-navy-700 dark:text-navy-200 relative z-10 text-sm">
-                  "{testimonial.content}"
+                  &ldquo;{testimonial.content}&rdquo;
                 </p>
               </div>
               <div className="flex items-center space-x-3 mt-4">
-                <img
+                <Image
                   src={testimonial.image}
                   alt={testimonial.name}
+                  width={40}
+                  height={40}
                   className="w-10 h-10 rounded-full object-cover"
                 />
                 <div>

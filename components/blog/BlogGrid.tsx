@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight, TrendingUp } from "lucide-react";
 
@@ -86,10 +87,11 @@ export default function BlogGrid() {
             <Link href={`/blog/${featuredArticle.id}`}>
               <div className="relative group cursor-pointer">
                 <div className="relative aspect-golden rounded-xl overflow-hidden">
-                  <img
+                  <Image
                     src={featuredArticle.image}
                     alt={featuredArticle.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/50 to-transparent" />
                   <div className="absolute top-3 left-3">
@@ -139,10 +141,11 @@ export default function BlogGrid() {
               <Link href={`/blog/${article.id}`}>
                 <div className="relative overflow-hidden rounded-xl bg-navy-100 dark:bg-navy-800 border border-navy-200 dark:border-navy-700 hover:border-gold-500 transition-all cursor-pointer">
                   <div className="relative aspect-golden overflow-hidden">
-                    <img
+                    <Image
                       src={article.image}
                       alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
                       <span className="px-2 py-0.5 bg-white/90 dark:bg-navy-900/90 backdrop-blur-md rounded-full text-xs font-semibold text-navy-900 dark:text-white">

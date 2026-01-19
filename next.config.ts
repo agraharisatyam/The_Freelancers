@@ -4,7 +4,16 @@ import path from "path";
 const nextConfig: NextConfig = {
   outputFileTracingRoot: path.join(__dirname),
   images: {
-    domains: ["images.unsplash.com", "via.placeholder.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+      },
+    ],
     formats: ["image/avif", "image/webp"],
   },
   experimental: {

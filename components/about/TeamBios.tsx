@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Linkedin, Mail, Github } from "lucide-react";
 
 const teamMembers = [
@@ -73,10 +74,11 @@ export default function TeamBios() {
             >
               <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-navy-50 to-white dark:from-navy-800 dark:to-navy-900 border border-navy-200 dark:border-navy-700">
                 <div className="relative aspect-golden overflow-hidden">
-                  <img
+                  <Image
                     src={member.image}
                     alt={member.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
                 </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useDarkMode } from "@/hooks/useDarkMode";
@@ -56,11 +57,13 @@ export default function Navbar() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="h-8 w-auto"
+              className="h-8 w-auto relative"
             >
-              <img
+              <Image
                 src="/Gemini_Generated_Image_los0s3los0s3los0.png"
                 alt="SAJSOFTWARES Logo"
+                width={120}
+                height={32}
                 className="h-full w-auto object-contain"
               />
             </motion.div>
