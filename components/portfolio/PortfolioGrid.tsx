@@ -145,20 +145,19 @@ export default function PortfolioGrid() {
                 onClick={() => setSelectedProject(project)}
                 className="group relative cursor-pointer"
               >
-                <div className="relative overflow-hidden rounded-2xl bg-navy-100 dark:bg-navy-800 aspect-golden">
+                <div className="relative overflow-hidden rounded-xl bg-navy-100 dark:bg-navy-800 aspect-square group-hover:shadow-xl group-hover:shadow-gold-500/20 transition-all duration-300">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <span className="inline-block px-2 py-0.5 mb-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <span className="inline-block px-2 py-0.5 bg-gold-500 text-navy-900 rounded-full text-xs font-semibold">
                       {project.category}
                     </span>
-                    <h3 className="text-lg font-bold text-white mb-1">{project.title}</h3>
-                    <p className="text-xs text-navy-200">{project.description}</p>
+                    <h3 className="text-base font-bold text-white mt-2">{project.title}</h3>
                   </div>
                 </div>
               </motion.div>
@@ -182,16 +181,16 @@ export default function PortfolioGrid() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full bg-white dark:bg-navy-800 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+              className="relative max-w-4xl w-full bg-white dark:bg-navy-800 rounded-xl overflow-hidden max-h-[90vh] overflow-y-auto"
             >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 z-10 p-2 bg-navy-900/50 backdrop-blur-md rounded-full text-white hover:bg-navy-900 transition-colors"
-              >
-                <X size={24} />
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-3 right-3 z-10 p-2 bg-navy-900/50 backdrop-blur-md rounded-full text-white hover:bg-navy-900 transition-colors"
+                >
+                  <X size={20} />
               </button>
 
-              <div className="relative h-96">
+              <div className="relative h-64 md:h-80">
                 <Image
                   src={selectedProject.image}
                   alt={selectedProject.title}
@@ -201,13 +200,13 @@ export default function PortfolioGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent" />
               </div>
 
-              <div className="p-6">
+              <div className="p-5 md:p-6">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <span className="inline-block px-2 py-0.5 mb-2 bg-gold-500/20 border border-gold-500/30 rounded-full text-gold-400 text-xs font-medium">
                       {selectedProject.category}
                     </span>
-                    <h2 className="text-2xl font-bold font-serif mb-2 text-navy-900 dark:text-white">
+                    <h2 className="text-xl md:text-2xl font-bold font-serif mt-1 text-navy-900 dark:text-white">
                       {selectedProject.title}
                     </h2>
                   </div>
