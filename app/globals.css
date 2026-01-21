@@ -78,7 +78,7 @@
 
   /* Section Padding - Golden Ratio based vertical spacing */
   .section-padding {
-    @apply py-12 md:py-16;
+    @apply py-8 md:py-10;
     /* Base: 48px (3rem) → 48 * 1.618 ≈ 78px (4.875rem) for larger screens */
   }
 
